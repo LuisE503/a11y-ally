@@ -1,0 +1,118 @@
+{
+  "url": "https://mega-shop-example.com",
+  "pageTitle": "MegaShop — Online Store",
+  "timestamp": "2026-03-10T10:00:00.000Z",
+  "score": 58,
+  "violations": [
+    {
+      "id": "image-alt",
+      "impact": "critical",
+      "severityLabel": "Critical",
+      "title": "Product Images Missing Alt Text",
+      "description": "Product images must have descriptive alt text for screen reader users.",
+      "explanation": "E-commerce product images are especially important for accessibility. Each product image should describe the product name, color, and key visual features so users who cannot see the image can understand what's being sold.",
+      "wcagLevel": "A",
+      "wcagRef": "WCAG 1.1.1 (Level A)",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.9/image-alt",
+      "nodes": [
+        { "html": "<img src=\"/products/shoe-001.jpg\" class=\"product-img\">", "target": [".product-img"] },
+        { "html": "<img src=\"/products/jacket-red.jpg\">", "target": [".grid img:nth-child(3)"] }
+      ],
+      "fixSnippets": [
+        {
+          "original": "<img src=\"/products/shoe-001.jpg\" class=\"product-img\">",
+          "fixed": "<img alt=\"Blue running shoe, Nike Air Max, side view\" src=\"/products/shoe-001.jpg\" class=\"product-img\">"
+        }
+      ],
+      "resources": ["https://www.w3.org/WAI/tutorials/images/"]
+    },
+    {
+      "id": "button-name",
+      "impact": "critical",
+      "severityLabel": "Critical",
+      "title": "Add to Cart Button Missing Name",
+      "description": "Shopping cart buttons must have accessible names.",
+      "explanation": "Buttons must have discernible text content or an aria-label attribute so screen readers can announce their purpose. Icon-only buttons like cart icons are especially prone to this issue.",
+      "wcagLevel": "A",
+      "wcagRef": "WCAG 4.1.2 (Level A)",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.9/button-name",
+      "nodes": [
+        { "html": "<button class=\"btn-cart\"><svg>...</svg></button>", "target": [".btn-cart"] },
+        { "html": "<button class=\"btn-wishlist\">♡</button>", "target": [".btn-wishlist"] }
+      ],
+      "fixSnippets": [
+        {
+          "original": "<button class=\"btn-cart\"><svg>...</svg></button>",
+          "fixed": "<button class=\"btn-cart\" aria-label=\"Add to cart\">\n  <svg aria-hidden=\"true\">...</svg>\n</button>"
+        }
+      ],
+      "resources": ["https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html"]
+    },
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "severityLabel": "Serious",
+      "title": "Price Text Has Low Contrast",
+      "description": "Sale prices and discount text do not meet contrast requirements.",
+      "explanation": "Text must have a contrast ratio of at least 4.5:1 for normal text. Light gray price text on white backgrounds is common in e-commerce but fails accessibility requirements.",
+      "wcagLevel": "AA",
+      "wcagRef": "WCAG 1.4.3 (Level AA)",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.9/color-contrast",
+      "nodes": [
+        { "html": "<span class=\"sale-price\" style=\"color:#ccc\">$29.99</span>", "target": [".sale-price"] }
+      ],
+      "fixSnippets": [
+        {
+          "original": ".sale-price { color: #ccc; }",
+          "fixed": ".sale-price {\n  color: #c41e3a; /* Red with 5.2:1 contrast on white */\n  font-weight: 600;\n}"
+        }
+      ],
+      "resources": ["https://webaim.org/resources/contrastchecker/"]
+    },
+    {
+      "id": "label",
+      "impact": "critical",
+      "severityLabel": "Critical",
+      "title": "Search and Filter Inputs Missing Labels",
+      "description": "Form inputs in the product search and filter sidebar lack labels.",
+      "explanation": "Every form input must have a programmatically associated label. Search bars and filter inputs without labels are invisible to screen reader users.",
+      "wcagLevel": "A",
+      "wcagRef": "WCAG 1.3.1 (Level A)",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.9/label",
+      "nodes": [
+        { "html": "<input type=\"search\" placeholder=\"Search products...\">", "target": ["input[type=search]"] },
+        { "html": "<select class=\"sort-by\"><option>Sort by price</option></select>", "target": [".sort-by"] }
+      ],
+      "fixSnippets": [
+        {
+          "original": "<input type=\"search\" placeholder=\"Search products...\">",
+          "fixed": "<label for=\"product-search\" class=\"sr-only\">Search products</label>\n<input type=\"search\" id=\"product-search\" placeholder=\"Search products...\">"
+        }
+      ],
+      "resources": ["https://www.w3.org/WAI/tutorials/forms/labels/"]
+    },
+    {
+      "id": "link-name",
+      "impact": "serious",
+      "severityLabel": "Serious",
+      "title": "Product Card Links Missing Accessible Text",
+      "description": "Product card links wrap images without providing accessible link text.",
+      "explanation": "Links must have discernible text content so users understand the link destination. When a link wraps only an image, the image's alt text becomes the link text.",
+      "wcagLevel": "A",
+      "wcagRef": "WCAG 2.4.4 (Level A)",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.9/link-name",
+      "nodes": [
+        { "html": "<a href=\"/product/123\"><img src=\"/p/123.jpg\"></a>", "target": [".product-card a"] }
+      ],
+      "fixSnippets": [
+        {
+          "original": "<a href=\"/product/123\"><img src=\"/p/123.jpg\"></a>",
+          "fixed": "<a href=\"/product/123\">\n  <img src=\"/p/123.jpg\" alt=\"Blue running shoe - $89.99\">\n</a>"
+        }
+      ],
+      "resources": ["https://www.w3.org/WAI/WCAG21/Understanding/link-purpose-in-context.html"]
+    }
+  ],
+  "passes": 42,
+  "engine": { "name": "axe-core", "version": "4.9.1" }
+}

@@ -1,0 +1,34 @@
+{
+  "name": "a11y-ally-cli",
+  "version": "1.0.0",
+  "description": "CLI accessibility scanner powered by axe-core with LLM-driven explanations",
+  "main": "src/index.js",
+  "bin": {
+    "a11y-ally": "src/index.js"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node --experimental-vm-modules node_modules/.bin/jest --forceExit",
+    "scan": "node src/index.js scan",
+    "demo": "node src/index.js demo"
+  },
+  "keywords": [
+    "accessibility",
+    "a11y",
+    "wcag",
+    "axe-core",
+    "scanner",
+    "cli"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "axe-core": "^4.9.1",
+    "chalk": "^4.1.2",
+    "commander": "^12.1.0",
+    "ora": "^5.4.1",
+    "puppeteer": "^22.12.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}

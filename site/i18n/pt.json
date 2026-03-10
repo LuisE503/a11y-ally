@@ -1,0 +1,41 @@
+{
+  "meta": { "lang": "pt", "dir": "ltr", "name": "Português" },
+  "nav": { "home": "Início", "features": "Recursos", "demo": "Demonstração", "install": "Instalar", "docs": "Documentação", "github": "GitHub" },
+  "hero": {
+    "badge": "Código Aberto • Grátis para Sempre",
+    "title": "Torne a Web Acessível para Todos",
+    "subtitle": "Analise qualquer site em busca de problemas de acessibilidade, obtenha explicações claras e receba snippets de correção prontos — powered by axe-core e IA.",
+    "ctaScan": "Experimentar Demo",
+    "ctaInstall": "Instalar Bookmarklet",
+    "ctaCli": "Obter CLI",
+    "stats": { "rules": "80+ Regras", "wcag": "WCAG 2.1", "languages": "7 Idiomas", "license": "Licença MIT" }
+  },
+  "features": {
+    "title": "Tudo o que Você Precisa",
+    "subtitle": "Um kit completo para auditoria de acessibilidade web",
+    "scanner": { "title": "Scanner Inteligente", "desc": "Powered by axe-core, o motor padrão da indústria. Detecta mais de 80 tipos de violações WCAG." },
+    "explanations": { "title": "Explicações com IA", "desc": "Cada violação vem com explicação clara do que está errado e como corrigir." },
+    "snippets": { "title": "Snippets de Correção", "desc": "Correções de código prontas para copiar e colar. Veja o antes e depois lado a lado." },
+    "bookmarklet": { "title": "Bookmarklet", "desc": "Ferramenta de um clique. Arraste para sua barra de favoritos e analise qualquer página." },
+    "cli": { "title": "Ferramenta CLI", "desc": "Automatize análises de acessibilidade no seu pipeline CI/CD." },
+    "reports": { "title": "Relatórios Profissionais", "desc": "Gere relatórios HTML, JSON ou Markdown com pontuação de severidade e mapeamento WCAG." }
+  },
+  "demo": {
+    "title": "Demonstração ao Vivo",
+    "subtitle": "Veja relatórios reais de acessibilidade",
+    "selectSite": "Selecione um site de demonstração:",
+    "sites": { "gov": "Portal Governamental", "ecommerce": "Loja E-Commerce", "blog": "Blog de Notícias" },
+    "score": "Pontuação", "violations": "Violações", "passes": "Aprovados",
+    "impact": { "critical": "Crítico", "serious": "Grave", "moderate": "Moderado", "minor": "Menor" },
+    "before": "Código Atual", "after": "Correção Sugerida", "copyFix": "Copiar", "copied": "Copiado!", "learnMore": "Saiba mais", "elements": "elementos afetados",
+    "noViolations": "Nenhuma violação encontrada — esta página passa em todos os testes!"
+  },
+  "install": {
+    "title": "Comece em Segundos",
+    "subtitle": "Escolha a ferramenta que se adapta ao seu workflow",
+    "bookmarklet": { "title": "Bookmarklet", "desc": "Arraste este botão para sua barra de favoritos:", "dragText": "♿ A11y Ally", "instructions": "Depois clique nele em qualquer site.", "step1": "Arraste o botão para a barra de favoritos", "step2": "Navegue até o site que deseja testar", "step3": "Clique no bookmarklet para analisar" },
+    "cli": { "title": "Ferramenta CLI", "desc": "Instale globalmente com npm:", "usage": "Uso:" }
+  },
+  "footer": { "desc": "Assistente de acessibilidade web de código aberto.", "links": "Links", "resources": "Recursos", "wcagGuide": "Diretrizes WCAG", "axeDocs": "Docs axe-core", "a11yProject": "The A11y Project", "license": "Publicado sob Licença MIT", "madeWith": "Feito com ♥ para acessibilidade" },
+  "languages": { "en": "English", "es": "Español", "fr": "Français", "de": "Deutsch", "pt": "Português", "zh": "中文", "ja": "日本語" }
+}

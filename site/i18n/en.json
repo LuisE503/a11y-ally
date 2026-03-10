@@ -1,0 +1,120 @@
+{
+  "meta": {
+    "lang": "en",
+    "dir": "ltr",
+    "name": "English"
+  },
+  "nav": {
+    "home": "Home",
+    "features": "Features",
+    "demo": "Live Demo",
+    "install": "Install",
+    "docs": "Docs",
+    "github": "GitHub"
+  },
+  "hero": {
+    "badge": "Open Source • Free Forever",
+    "title": "Make the Web Accessible for Everyone",
+    "subtitle": "Scan any website for accessibility issues, get clear explanations, and receive ready-to-use fix snippets — powered by axe-core and AI.",
+    "ctaScan": "Try Live Demo",
+    "ctaInstall": "Install Bookmarklet",
+    "ctaCli": "Get CLI Tool",
+    "stats": {
+      "rules": "80+ Rules",
+      "wcag": "WCAG 2.1",
+      "languages": "7 Languages",
+      "license": "MIT License"
+    }
+  },
+  "features": {
+    "title": "Everything You Need",
+    "subtitle": "A complete toolkit for web accessibility auditing",
+    "scanner": {
+      "title": "Smart Scanner",
+      "desc": "Powered by axe-core, the industry-standard accessibility testing engine. Detects 80+ types of WCAG violations with zero false positives."
+    },
+    "explanations": {
+      "title": "AI Explanations",
+      "desc": "Every violation comes with a clear, human-readable explanation of what's wrong, who it affects, and exactly how to fix it."
+    },
+    "snippets": {
+      "title": "Fix Snippets",
+      "desc": "Copy-paste ready code corrections for each violation. See the before and after side by side — no guesswork needed."
+    },
+    "bookmarklet": {
+      "title": "Bookmarklet",
+      "desc": "One-click browser tool. Drag it to your bookmarks bar and scan any page instantly without installing anything."
+    },
+    "cli": {
+      "title": "CLI Tool",
+      "desc": "Automate accessibility scans in your CI/CD pipeline. Scan single URLs or batch process entire sitemaps."
+    },
+    "reports": {
+      "title": "Beautiful Reports",
+      "desc": "Generate professional HTML, JSON, or Markdown reports with severity scoring, WCAG mapping, and exportable data."
+    }
+  },
+  "demo": {
+    "title": "Live Demo",
+    "subtitle": "See real accessibility reports from sample websites",
+    "selectSite": "Select a demo site:",
+    "sites": {
+      "gov": "Government Portal",
+      "ecommerce": "E-Commerce Store",
+      "blog": "News Blog"
+    },
+    "score": "Score",
+    "violations": "Violations",
+    "passes": "Passes",
+    "impact": {
+      "critical": "Critical",
+      "serious": "Serious",
+      "moderate": "Moderate",
+      "minor": "Minor"
+    },
+    "before": "Current Code",
+    "after": "Suggested Fix",
+    "copyFix": "Copy Fix",
+    "copied": "Copied!",
+    "learnMore": "Learn More",
+    "elements": "elements affected",
+    "noViolations": "No violations found — this page passes all checks!"
+  },
+  "install": {
+    "title": "Get Started in Seconds",
+    "subtitle": "Choose the tool that fits your workflow",
+    "bookmarklet": {
+      "title": "Bookmarklet",
+      "desc": "Drag this button to your bookmarks bar:",
+      "dragText": "♿ A11y Ally",
+      "instructions": "Then click it on any website to run an instant accessibility scan.",
+      "step1": "Drag the button above to your bookmarks bar",
+      "step2": "Navigate to any website you want to test",
+      "step3": "Click the bookmarklet to scan the page"
+    },
+    "cli": {
+      "title": "CLI Tool",
+      "desc": "Install globally with npm:",
+      "usage": "Usage:"
+    }
+  },
+  "footer": {
+    "desc": "Open source web accessibility assistant. Making the web usable for everyone.",
+    "links": "Links",
+    "resources": "Resources",
+    "wcagGuide": "WCAG Guidelines",
+    "axeDocs": "axe-core Docs",
+    "a11yProject": "The A11y Project",
+    "license": "Released under MIT License",
+    "madeWith": "Made with ♥ for accessibility"
+  },
+  "languages": {
+    "en": "English",
+    "es": "Español",
+    "fr": "Français",
+    "de": "Deutsch",
+    "pt": "Português",
+    "zh": "中文",
+    "ja": "日本語"
+  }
+}

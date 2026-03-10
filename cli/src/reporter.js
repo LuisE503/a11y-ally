@@ -1,0 +1,570 @@
+/**
+ * A11y Ally — Report Generator
+ * Generates accessibility reports in HTML, JSON, and Markdown formats
+ */
+
+const fs = require('fs');
+const path = require('path');
+
+/**
+ * Generate report in the specified format
+ * @param {object} scanResult - Enhanced scan result with explanations
+ * @param {string} format - Output format: 'html', 'json', or 'md'
+ * @param {string} outputPath - Path to write the report
+ * @param {object} options - Additional options (lang, etc.)
+ */
+function generateReport(scanResult, format = 'html', outputPath = null, options = {}) {
+  let content;
+
+  switch (format.toLowerCase()) {
+    case 'json':
+      content = generateJsonReport(scanResult);
+      break;
+    case 'md':
+    case 'markdown':
+      content = generateMarkdownReport(scanResult, options);
+      break;
+    case 'html':
+    default:
+      content = generateHtmlReport(scanResult, options);
+      break;
+  }
+
+  if (outputPath) {
+    const dir = path.dirname(outputPath);
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+    fs.writeFileSync(outputPath, content, 'utf8');
+  }
+
+  return content;
+}
+
+/**
+ * JSON report — raw structured data
+ */
+function generateJsonReport(scanResult) {
+  const report = { ...scanResult };
+  delete report.screenshot; // Remove base64 screenshot from JSON
+  return JSON.stringify(report, null, 2);
+}
+
+/**
+ * Markdown report
+ */
+function generateMarkdownReport(scanResult, options = {}) {
+  const { url, pageTitle, score, summary, violations, timestamp } = scanResult;
+
+  let md = `# Accessibility Report\n\n`;
+  md += `**URL:** ${url}\n`;
+  md += `**Page Title:** ${pageTitle || 'N/A'}\n`;
+  md += `**Date:** ${new Date(timestamp).toLocaleDateString()}\n`;
+  md += `**Score:** ${score}/100\n\n`;
+
+  md += `## Summary\n\n`;
+  md += `| Metric | Count |\n`;
+  md += `|--------|-------|\n`;
+  md += `| Violations | ${summary?.violations || 0} |\n`;
+  md += `| Passes | ${summary?.passes || 0} |\n`;
+  md += `| Incomplete | ${summary?.incomplete || 0} |\n`;
+  md += `| Inapplicable | ${summary?.inapplicable || 0} |\n\n`;
+
+  if (violations && violations.length > 0) {
+    md += `## Violations\n\n`;
+
+    violations.forEach((v, i) => {
+      md += `### ${i + 1}. ${v.fixTitle || v.description}\n\n`;
+      md += `- **Impact:** ${v.severityLabel} (${v.impact})\n`;
+      md += `- **WCAG:** ${v.wcagRef || v.wcagLevel}\n`;
+      md += `- **Rule:** \`${v.id}\`\n\n`;
+
+      if (v.explanation) {
+        md += `**Explanation:** ${v.explanation}\n\n`;
+      }
+
+      if (v.fixSnippets && v.fixSnippets.length > 0) {
+        md += `**Fix Snippets:**\n\n`;
+        v.fixSnippets.forEach((snippet, j) => {
+          md += `<details><summary>Element ${j + 1}</summary>\n\n`;
+          md += `Before:\n\`\`\`html\n${snippet.original}\n\`\`\`\n\n`;
+          md += `After:\n\`\`\`html\n${snippet.fixed}\n\`\`\`\n\n`;
+          md += `</details>\n\n`;
+        });
+      }
+
+      if (v.resources && v.resources.length > 0) {
+        md += `**Resources:** ${v.resources.map(r => `[Link](${r})`).join(', ')}\n\n`;
+      }
+
+      md += `---\n\n`;
+    });
+  } else {
+    md += `## ✅ No Violations Found\n\nGreat job! This page passes all checked accessibility rules.\n`;
+  }
+
+  return md;
+}
+
+/**
+ * HTML report with premium dark theme
+ */
+function generateHtmlReport(scanResult, options = {}) {
+  const { url, pageTitle, score, summary, violations, timestamp, screenshot, engine } = scanResult;
+  const scoreColor = score >= 90 ? '#00d4aa' : score >= 70 ? '#f0c040' : score >= 50 ? '#f09040' : '#f04040';
+
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A11y Report — ${pageTitle || url}</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-primary: #0a0a1a;
+      --bg-secondary: #12122a;
+      --bg-card: rgba(255,255,255,0.04);
+      --bg-card-hover: rgba(255,255,255,0.07);
+      --border: rgba(255,255,255,0.08);
+      --text-primary: #e8e8f0;
+      --text-secondary: #8888a8;
+      --text-muted: #555570;
+      --accent: #6c5ce7;
+      --accent-glow: rgba(108,92,231,0.3);
+      --critical: #f04040;
+      --serious: #f09040;
+      --moderate: #f0c040;
+      --minor: #60a0f0;
+      --pass: #00d4aa;
+      --radius: 12px;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --mono: 'JetBrains Mono', 'Fira Code', monospace;
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    /* Header */
+    .report-header {
+      text-align: center;
+      padding: 3rem 0;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .report-header h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent), #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .report-header .url {
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      word-break: break-all;
+    }
+
+    .report-header .meta {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Score Ring */
+    .score-section {
+      display: flex;
+      justify-content: center;
+      padding: 2rem 0;
+    }
+
+    .score-ring {
+      position: relative;
+      width: 160px;
+      height: 160px;
+    }
+
+    .score-ring svg {
+      transform: rotate(-90deg);
+      width: 160px;
+      height: 160px;
+    }
+
+    .score-ring .bg { stroke: var(--border); }
+    .score-ring .fg {
+      stroke: ${scoreColor};
+      stroke-linecap: round;
+      transition: stroke-dashoffset 1s ease;
+      filter: drop-shadow(0 0 8px ${scoreColor}50);
+    }
+
+    .score-value {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    .score-value .number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: ${scoreColor};
+    }
+
+    .score-value .label {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Summary Cards */
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .summary-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.2rem;
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .summary-card:hover {
+      background: var(--bg-card-hover);
+      transform: translateY(-2px);
+    }
+
+    .summary-card .count {
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+
+    .summary-card .label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 0.3rem;
+    }
+
+    /* Violations */
+    .violations-section { margin: 2rem 0; }
+
+    .violations-section h2 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .violation-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      transition: all 0.3s;
+    }
+
+    .violation-card:hover {
+      background: var(--bg-card-hover);
+      border-color: rgba(255,255,255,0.12);
+    }
+
+    .violation-header {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .severity-badge {
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .severity-critical { background: var(--critical)20; color: var(--critical); border: 1px solid var(--critical)40; }
+    .severity-serious { background: var(--serious)20; color: var(--serious); border: 1px solid var(--serious)40; }
+    .severity-moderate { background: var(--moderate)20; color: var(--moderate); border: 1px solid var(--moderate)40; }
+    .severity-minor { background: var(--minor)20; color: var(--minor); border: 1px solid var(--minor)40; }
+
+    .violation-title {
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .violation-id {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-left: auto;
+    }
+
+    .violation-explanation {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+      line-height: 1.7;
+    }
+
+    .wcag-ref {
+      font-size: 0.75rem;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+      display: inline-block;
+    }
+
+    /* Code Blocks */
+    .snippet-group { margin: 1rem 0; }
+
+    .snippet-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.3rem;
+      color: var(--text-muted);
+    }
+
+    .snippet-label.before { color: var(--critical); }
+    .snippet-label.after { color: var(--pass); }
+
+    pre {
+      background: #0d0d20;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+      overflow-x: auto;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      line-height: 1.5;
+      margin-bottom: 0.8rem;
+    }
+
+    pre.before-code { border-left: 3px solid var(--critical); }
+    pre.after-code { border-left: 3px solid var(--pass); }
+
+    .copy-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.3rem 0.6rem;
+      font-size: 0.7rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .copy-btn:hover {
+      background: var(--accent)20;
+      color: var(--accent);
+      border-color: var(--accent)40;
+    }
+
+    /* Resources */
+    .resources {
+      margin-top: 1rem;
+      padding-top: 0.8rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .resources a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.8rem;
+      margin-right: 1rem;
+    }
+
+    .resources a:hover { text-decoration: underline; }
+
+    /* Footer */
+    .report-footer {
+      text-align: center;
+      padding: 2rem 0;
+      margin-top: 3rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .report-footer a { color: var(--accent); text-decoration: none; }
+
+    /* No violations */
+    .no-violations {
+      text-align: center;
+      padding: 3rem;
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      border: 1px solid var(--pass)30;
+    }
+
+    .no-violations .icon { font-size: 3rem; margin-bottom: 1rem; }
+    .no-violations h3 { color: var(--pass); margin-bottom: 0.5rem; }
+    .no-violations p { color: var(--text-secondary); font-size: 0.9rem; }
+
+    @media (max-width: 600px) {
+      .container { padding: 1rem; }
+      .report-header h1 { font-size: 1.4rem; }
+      .summary-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="report-header">
+      <h1>♿ A11y Ally Report</h1>
+      <p class="url">${escapeHtml(url)}</p>
+      <div class="meta">
+        <span>📄 ${escapeHtml(pageTitle || 'Untitled')}</span>
+        <span>🕐 ${new Date(timestamp).toLocaleString()}</span>
+        <span>⚙️ ${engine?.name || 'axe-core'} v${engine?.version || '?'}</span>
+      </div>
+    </header>
+
+    <section class="score-section">
+      <div class="score-ring">
+        <svg viewBox="0 0 160 160">
+          <circle class="bg" cx="80" cy="80" r="70" fill="none" stroke-width="8"/>
+          <circle class="fg" cx="80" cy="80" r="70" fill="none" stroke-width="8"
+            stroke-dasharray="${2 * Math.PI * 70}"
+            stroke-dashoffset="${2 * Math.PI * 70 * (1 - (score || 0) / 100)}"/>
+        </svg>
+        <div class="score-value">
+          <div class="number">${score !== null ? score : '—'}</div>
+          <div class="label">Score</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="summary-grid">
+      <div class="summary-card">
+        <div class="count" style="color:var(--critical)">${summary?.violations || 0}</div>
+        <div class="label">Violations</div>
+      </div>
+      <div class="summary-card">
+        <div class="count" style="color:var(--pass)">${summary?.passes || 0}</div>
+        <div class="label">Passes</div>
+      </div>
+      <div class="summary-card">
+        <div class="count" style="color:var(--moderate)">${summary?.incomplete || 0}</div>
+        <div class="label">Incomplete</div>
+      </div>
+      <div class="summary-card">
+        <div class="count" style="color:var(--text-muted)">${summary?.inapplicable || 0}</div>
+        <div class="label">N/A</div>
+      </div>
+    </section>
+
+    <section class="violations-section">
+      <h2>Violations (${violations?.length || 0})</h2>
+      ${violations && violations.length > 0 ? violations.map((v, i) => `
+      <div class="violation-card">
+        <div class="violation-header">
+          <span class="severity-badge severity-${v.impact}">${v.severityLabel || v.impact}</span>
+          <span class="violation-title">${escapeHtml(v.fixTitle || v.description)}</span>
+          <span class="violation-id">${v.id}</span>
+        </div>
+        <span class="wcag-ref">${escapeHtml(v.wcagRef || v.wcagLevel || '')}</span>
+        <p class="violation-explanation">${escapeHtml(v.explanation || v.help)}</p>
+        ${v.fixSnippets ? v.fixSnippets.map((s, j) => `
+        <div class="snippet-group">
+          <div class="snippet-label before">✗ Current Code</div>
+          <pre class="before-code"><code>${escapeHtml(s.original)}</code></pre>
+          <div class="snippet-label after">✓ Suggested Fix</div>
+          <pre class="after-code"><code>${escapeHtml(s.fixed)}</code></pre>
+          <button class="copy-btn" onclick="navigator.clipboard.writeText(this.previousElementSibling.querySelector('code').textContent).then(()=>{this.textContent='✓ Copied!'})">📋 Copy Fix</button>
+        </div>
+        `).join('') : ''}
+        ${v.resources && v.resources.length > 0 ? `
+        <div class="resources">
+          ${v.resources.map(r => `<a href="${escapeHtml(r)}" target="_blank" rel="noopener">📖 Learn More</a>`).join('')}
+        </div>` : ''}
+      </div>
+      `).join('') : `
+      <div class="no-violations">
+        <div class="icon">✅</div>
+        <h3>No Violations Found</h3>
+        <p>This page passes all checked accessibility rules. Great work!</p>
+      </div>
+      `}
+    </section>
+
+    <footer class="report-footer">
+      <p>Generated by <a href="https://github.com/YOUR_USERNAME/a11y-ally">A11y Ally</a> — Open Source Web Accessibility Assistant</p>
+      <p>Powered by axe-core • ${new Date(timestamp).toISOString()}</p>
+    </footer>
+  </div>
+
+  <script>
+    // Animate score ring on load
+    document.addEventListener('DOMContentLoaded', () => {
+      const fg = document.querySelector('.score-ring .fg');
+      if (fg) {
+        const dashArray = parseFloat(fg.getAttribute('stroke-dasharray'));
+        fg.style.strokeDashoffset = dashArray;
+        requestAnimationFrame(() => {
+          fg.style.transition = 'stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1)';
+          fg.style.strokeDashoffset = fg.getAttribute('stroke-dashoffset');
+        });
+      }
+    });
+  </script>
+</body>
+</html>`;
+}
+
+/**
+ * Escape HTML entities
+ */
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+module.exports = {
+  generateReport,
+  generateJsonReport,
+  generateMarkdownReport,
+  generateHtmlReport,
+  escapeHtml
+};

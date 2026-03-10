@@ -1,0 +1,31 @@
+{
+  "name": "a11y-ally",
+  "version": "1.0.0",
+  "description": "Web Accessibility Assistant — Scanner, bookmarklet & reports powered by axe-core + LLM explanations",
+  "keywords": [
+    "accessibility",
+    "a11y",
+    "wcag",
+    "axe-core",
+    "scanner",
+    "bookmarklet",
+    "audit",
+    "web-accessibility"
+  ],
+  "homepage": "https://github.com/YOUR_USERNAME/a11y-ally",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YOUR_USERNAME/a11y-ally.git"
+  },
+  "license": "MIT",
+  "author": "A11y Ally Contributors",
+  "workspaces": [
+    "cli"
+  ],
+  "scripts": {
+    "test": "cd cli && npm test",
+    "build:bookmarklet": "node bookmarklet/build.js",
+    "dev": "cd site && npx -y serve .",
+    "lint": "cd cli && npx eslint src/"
+  }
+}

@@ -1,0 +1,41 @@
+<!-- Test HTML file that passes all accessibility checks -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accessible Test Page</title>
+</head>
+<body>
+  <header role="banner">
+    <nav role="navigation" aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+    </nav>
+  </header>
+  
+  <main role="main">
+    <h1>Welcome to the Accessible Page</h1>
+    
+    <img src="test.jpg" alt="A descriptive alternative text for the image">
+    
+    <button aria-label="Close dialog">X</button>
+    
+    <form>
+      <label for="search-input">Search</label>
+      <input type="text" id="search-input" placeholder="Search...">
+      
+      <button type="submit">Search</button>
+    </form>
+    
+    <h2>Section Title</h2>
+    <p style="color: #333; background: #fff;">Good contrast text</p>
+    
+    <a href="/page">Visit our page</a>
+  </main>
+  
+  <footer role="contentinfo">
+    <p>&copy; 2026 Test Page</p>
+  </footer>
+</body>
+</html>

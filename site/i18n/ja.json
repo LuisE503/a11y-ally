@@ -1,0 +1,41 @@
+{
+  "meta": { "lang": "ja", "dir": "ltr", "name": "日本語" },
+  "nav": { "home": "ホーム", "features": "機能", "demo": "デモ", "install": "インストール", "docs": "ドキュメント", "github": "GitHub" },
+  "hero": {
+    "badge": "オープンソース • 永久無料",
+    "title": "すべての人にアクセシブルなウェブを",
+    "subtitle": "任意のウェブサイトのアクセシビリティ問題をスキャンし、明確な説明とすぐに使える修正コードを取得 — axe-core と AI で駆動。",
+    "ctaScan": "デモを試す",
+    "ctaInstall": "ブックマークレットをインストール",
+    "ctaCli": "CLI ツールを取得",
+    "stats": { "rules": "80以上のルール", "wcag": "WCAG 2.1", "languages": "7言語対応", "license": "MIT ライセンス" }
+  },
+  "features": {
+    "title": "必要なすべてが揃っています",
+    "subtitle": "ウェブアクセシビリティ監査のための完全なツールキット",
+    "scanner": { "title": "スマートスキャナー", "desc": "業界標準のaxe-coreエンジンで駆動。80種類以上のWCAG違反を検出。" },
+    "explanations": { "title": "AI 解説", "desc": "各違反に明確な説明を添付：何が問題か、誰に影響するか、修正方法。" },
+    "snippets": { "title": "修正スニペット", "desc": "コピー＆ペーストですぐに使えるコード修正。修正前後を並べて確認。" },
+    "bookmarklet": { "title": "ブックマークレット", "desc": "ワンクリックブラウザツール。ブックマークバーにドラッグして即座にスキャン。" },
+    "cli": { "title": "CLI ツール", "desc": "CI/CDパイプラインでアクセシビリティスキャンを自動化。" },
+    "reports": { "title": "プロフェッショナルレポート", "desc": "HTML、JSON、Markdownレポートを生成。重要度スコアリングとWCAGマッピング付き。" }
+  },
+  "demo": {
+    "title": "ライブデモ",
+    "subtitle": "サンプルサイトの実際のアクセシビリティレポートをご覧ください",
+    "selectSite": "デモサイトを選択：",
+    "sites": { "gov": "政府ポータル", "ecommerce": "ECサイト", "blog": "ニュースブログ" },
+    "score": "スコア", "violations": "違反", "passes": "合格",
+    "impact": { "critical": "重大", "serious": "深刻", "moderate": "中程度", "minor": "軽微" },
+    "before": "現在のコード", "after": "修正案", "copyFix": "コピー", "copied": "コピー済み!", "learnMore": "詳細", "elements": "影響を受ける要素",
+    "noViolations": "違反は見つかりませんでした — このページはすべてのチェックに合格しています！"
+  },
+  "install": {
+    "title": "数秒で始められます",
+    "subtitle": "ワークフローに合ったツールを選択",
+    "bookmarklet": { "title": "ブックマークレット", "desc": "このボタンをブックマークバーにドラッグ：", "dragText": "♿ A11y Ally", "instructions": "任意のサイトでクリックしてスキャン。", "step1": "ボタンをブックマークバーにドラッグ", "step2": "テストしたいサイトに移動", "step3": "ブックマークレットをクリック" },
+    "cli": { "title": "CLI ツール", "desc": "npmでグローバルインストール：", "usage": "使い方：" }
+  },
+  "footer": { "desc": "オープンソースのウェブアクセシビリティアシスタント。", "links": "リンク", "resources": "リソース", "wcagGuide": "WCAG ガイドライン", "axeDocs": "axe-core ドキュメント", "a11yProject": "The A11y Project", "license": "MIT ライセンスで公開", "madeWith": "アクセシビリティのために ♥ で作成" },
+  "languages": { "en": "English", "es": "Español", "fr": "Français", "de": "Deutsch", "pt": "Português", "zh": "中文", "ja": "日本語" }
+}

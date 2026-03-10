@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO -->
+  <title>A11y Ally — Web Accessibility Assistant</title>
+  <meta name="description" content="Scan any website for accessibility issues, get clear explanations, and receive ready-to-use fix snippets — powered by axe-core and AI.">
+  <meta name="keywords" content="accessibility, a11y, wcag, scanner, audit, bookmarklet, axe-core, web accessibility, ADA compliance">
+  <meta name="author" content="A11y Ally Contributors">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://YOUR_USERNAME.github.io/a11y-ally/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="A11y Ally — Web Accessibility Assistant">
+  <meta property="og:description" content="Scan any website for accessibility issues, get clear explanations, and receive ready-to-use fix snippets.">
+  <meta property="og:url" content="https://YOUR_USERNAME.github.io/a11y-ally/">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="es_ES">
+  <meta property="og:locale:alternate" content="fr_FR">
+  <meta property="og:locale:alternate" content="de_DE">
+  <meta property="og:locale:alternate" content="pt_BR">
+  <meta property="og:locale:alternate" content="zh_CN">
+  <meta property="og:locale:alternate" content="ja_JP">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="A11y Ally — Web Accessibility Assistant">
+  <meta name="twitter:description" content="Scan any website for accessibility issues, get clear explanations, and receive ready-to-use fix snippets.">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "A11y Ally",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Any",
+    "description": "Web accessibility scanner with AI-powered explanations and fix snippets",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "license": "https://opensource.org/licenses/MIT"
+  }
+  </script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="./css/styles.css">
+
+  <!-- Favicon (accessibility icon) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>♿</text></svg>" type="image/svg+xml">
+</head>
+<body>
+  <!-- Skip to content (accessibility) -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ═══════════════ Navigation ═══════════════ -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <a href="#" class="nav-logo" aria-label="A11y Ally Home">
+        <span class="icon" aria-hidden="true">♿</span>
+        <span class="text">A11y Ally</span>
+      </a>
+
+      <div class="nav-links" id="nav-links">
+        <a href="#features" data-i18n="nav.features">Features</a>
+        <a href="#demo" data-i18n="nav.demo">Live Demo</a>
+        <a href="#install" data-i18n="nav.install">Install</a>
+        <a href="https://github.com/YOUR_USERNAME/a11y-ally" target="_blank" rel="noopener" data-i18n="nav.github">GitHub</a>
+
+        <!-- Language Switcher -->
+        <div class="lang-switcher">
+          <button class="lang-btn" aria-label="Change language" aria-expanded="false">🌐 EN</button>
+          <div class="lang-dropdown" role="menu" aria-label="Language selector">
+            <button class="lang-option active" data-lang="en" role="menuitem">🇺🇸 English</button>
+            <button class="lang-option" data-lang="es" role="menuitem">🇪🇸 Español</button>
+            <button class="lang-option" data-lang="fr" role="menuitem">🇫🇷 Français</button>
+            <button class="lang-option" data-lang="de" role="menuitem">🇩🇪 Deutsch</button>
+            <button class="lang-option" data-lang="pt" role="menuitem">🇧🇷 Português</button>
+            <button class="lang-option" data-lang="zh" role="menuitem">🇨🇳 中文</button>
+            <button class="lang-option" data-lang="ja" role="menuitem">🇯🇵 日本語</button>
+          </div>
+        </div>
+
+        <a href="#install" class="nav-cta" data-i18n="nav.install">Install</a>
+      </div>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    </div>
+  </nav>
+
+  <!-- ═══════════════ Hero Section ═══════════════ -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero-content">
+        <span class="hero-badge" data-i18n="hero.badge">Open Source • Free Forever</span>
+
+        <h1 data-i18n="hero.title">Make the Web Accessible for Everyone</h1>
+
+        <p class="hero-subtitle" data-i18n="hero.subtitle">
+          Scan any website for accessibility issues, get clear explanations, and receive ready-to-use fix snippets — powered by axe-core and AI.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#demo" class="btn btn-primary" data-i18n="hero.ctaScan">
+            Try Live Demo
+          </a>
+          <a href="#install" class="btn btn-secondary" data-i18n="hero.ctaInstall">
+            Install Bookmarklet
+          </a>
+          <a href="#install-cli" class="btn btn-ghost" data-i18n="hero.ctaCli">
+            Get CLI Tool
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="value" data-i18n="hero.stats.rules">80+ Rules</div>
+            <div class="label">axe-core</div>
+          </div>
+          <div class="hero-stat">
+            <div class="value" data-i18n="hero.stats.wcag">WCAG 2.1</div>
+            <div class="label">A / AA / AAA</div>
+          </div>
+          <div class="hero-stat">
+            <div class="value" data-i18n="hero.stats.languages">7 Languages</div>
+            <div class="label">i18n</div>
+          </div>
+          <div class="hero-stat">
+            <div class="value" data-i18n="hero.stats.license">MIT License</div>
+            <div class="label">Open Source</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ Main Content ═══════════════ -->
+  <main id="main-content">
+
+    <!-- ─── Features Section ─── -->
+    <section class="section" id="features">
+      <div class="container">
+        <div class="section-header animate-in">
+          <h2 data-i18n="features.title">Everything You Need</h2>
+          <p data-i18n="features.subtitle">A complete toolkit for web accessibility auditing</p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card animate-in">
+            <div class="feature-icon" aria-hidden="true">🔍</div>
+            <h3 data-i18n="features.scanner.title">Smart Scanner</h3>
+            <p data-i18n="features.scanner.desc">Powered by axe-core, the industry-standard accessibility testing engine. Detects 80+ types of WCAG violations with zero false positives.</p>
+          </div>
+
+          <div class="feature-card animate-in">
+            <div class="feature-icon" aria-hidden="true">🤖</div>
+            <h3 data-i18n="features.explanations.title">AI Explanations</h3>
+            <p data-i18n="features.explanations.desc">Every violation comes with a clear, human-readable explanation of what's wrong, who it affects, and exactly how to fix it.</p>
+          </div>
+
+          <div class="feature-card animate-in">
+            <div class="feature-icon" aria-hidden="true">✂️</div>
+            <h3 data-i18n="features.snippets.title">Fix Snippets</h3>
+            <p data-i18n="features.snippets.desc">Copy-paste ready code corrections for each violation. See the before and after side by side — no guesswork needed.</p>
+          </div>
+
+          <div class="feature-card animate-in">
+            <div class="feature-icon" aria-hidden="true">🔖</div>
+            <h3 data-i18n="features.bookmarklet.title">Bookmarklet</h3>
+            <p data-i18n="features.bookmarklet.desc">One-click browser tool. Drag it to your bookmarks bar and scan any page instantly without installing anything.</p>
+          </div>
+
+          <div class="feature-card animate-in">
+            <div class="feature-icon" aria-hidden="true">⌨️</div>
+            <h3 data-i18n="features.cli.title">CLI Tool</h3>
+            <p data-i18n="features.cli.desc">Automate accessibility scans in your CI/CD pipeline. Scan single URLs or batch process entire sitemaps.</p>
+          </div>
+
+          <div class="feature-card animate-in">
+            <div class="feature-icon" aria-hidden="true">📊</div>
+            <h3 data-i18n="features.reports.title">Beautiful Reports</h3>
+            <p data-i18n="features.reports.desc">Generate professional HTML, JSON, or Markdown reports with severity scoring, WCAG mapping, and exportable data.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Demo Section ─── -->
+    <section class="section demo-section" id="demo">
+      <div class="container">
+        <div class="section-header animate-in">
+          <h2 data-i18n="demo.title">Live Demo</h2>
+          <p data-i18n="demo.subtitle">See real accessibility reports from sample websites</p>
+        </div>
+
+        <div class="demo-tabs animate-in">
+          <button class="demo-tab active" data-report="gov" data-i18n="demo.sites.gov">Government Portal</button>
+          <button class="demo-tab" data-report="ecommerce" data-i18n="demo.sites.ecommerce">E-Commerce Store</button>
+          <button class="demo-tab" data-report="blog" data-i18n="demo.sites.blog">News Blog</button>
+        </div>
+
+        <div class="demo-report animate-in" id="demo-report-content">
+          <!-- Rendered dynamically by demo.js -->
+          <div style="text-align:center;padding:60px 20px;color:var(--color-text-muted);">
+            <div style="font-size:32px;margin-bottom:12px;animation:a11ySpin 1s linear infinite;">⏳</div>
+            <p>Loading demo reports...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Install Section ─── -->
+    <section class="section" id="install">
+      <div class="container">
+        <div class="section-header animate-in">
+          <h2 data-i18n="install.title">Get Started in Seconds</h2>
+          <p data-i18n="install.subtitle">Choose the tool that fits your workflow</p>
+        </div>
+
+        <div class="install-grid animate-in">
+          <!-- Bookmarklet Install -->
+          <div class="install-card">
+            <h3>🔖 <span data-i18n="install.bookmarklet.title">Bookmarklet</span></h3>
+            <p data-i18n="install.bookmarklet.desc">Drag this button to your bookmarks bar:</p>
+
+            <a id="bookmarklet-link" class="bookmarklet-drag" href="javascript:void(0)" data-i18n="install.bookmarklet.dragText">
+              ♿ A11y Ally
+            </a>
+
+            <div class="install-steps">
+              <div class="install-step">
+                <div class="step-number">1</div>
+                <span data-i18n="install.bookmarklet.step1">Drag the button above to your bookmarks bar</span>
+              </div>
+              <div class="install-step">
+                <div class="step-number">2</div>
+                <span data-i18n="install.bookmarklet.step2">Navigate to any website you want to test</span>
+              </div>
+              <div class="install-step">
+                <div class="step-number">3</div>
+                <span data-i18n="install.bookmarklet.step3">Click the bookmarklet to scan the page</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- CLI Install -->
+          <div class="install-card" id="install-cli">
+            <h3>⌨️ <span data-i18n="install.cli.title">CLI Tool</span></h3>
+            <p data-i18n="install.cli.desc">Install globally with npm:</p>
+
+            <div class="code-block">
+              <span class="prompt">$ </span><span class="cmd">npm install -g a11y-ally-cli</span>
+            </div>
+
+            <p style="margin-bottom: var(--space-md);" data-i18n="install.cli.usage">Usage:</p>
+
+            <div class="code-block">
+              <span class="prompt">$ </span><span class="cmd">a11y-ally scan https://example.com</span>
+            </div>
+            <div class="code-block">
+              <span class="prompt">$ </span><span class="cmd">a11y-ally scan https://example.com -f html -o report.html</span>
+            </div>
+            <div class="code-block">
+              <span class="prompt">$ </span><span class="cmd">a11y-ally demo</span>
+            </div>
+            <div class="code-block">
+              <span class="prompt">$ </span><span class="cmd">a11y-ally batch urls.txt --output-dir ./reports</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════ Footer ═══════════════ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">
+            <span aria-hidden="true">♿</span>
+            <span class="text">A11y Ally</span>
+          </div>
+          <p data-i18n="footer.desc">Open source web accessibility assistant. Making the web usable for everyone.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footer.links">Links</h4>
+          <a href="#features" data-i18n="nav.features">Features</a>
+          <a href="#demo" data-i18n="nav.demo">Live Demo</a>
+          <a href="#install" data-i18n="nav.install">Install</a>
+          <a href="https://github.com/YOUR_USERNAME/a11y-ally" target="_blank" rel="noopener" data-i18n="nav.github">GitHub</a>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footer.resources">Resources</h4>
+          <a href="https://www.w3.org/WAI/WCAG21/quickref/" target="_blank" rel="noopener" data-i18n="footer.wcagGuide">WCAG Guidelines</a>
+          <a href="https://github.com/dequelabs/axe-core" target="_blank" rel="noopener" data-i18n="footer.axeDocs">axe-core Docs</a>
+          <a href="https://www.a11yproject.com/" target="_blank" rel="noopener" data-i18n="footer.a11yProject">The A11y Project</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span data-i18n="footer.license">Released under MIT License</span>
+        <span data-i18n="footer.madeWith">Made with ♥ for accessibility</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="./js/i18n.js"></script>
+  <script src="./js/demo.js"></script>
+  <script src="./js/app.js"></script>
+
+  <!-- Spin animation for loading state -->
+  <style>
+    @keyframes a11ySpin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</body>
+</html>

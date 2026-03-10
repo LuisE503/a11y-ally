@@ -1,0 +1,120 @@
+{
+  "meta": {
+    "lang": "es",
+    "dir": "ltr",
+    "name": "Español"
+  },
+  "nav": {
+    "home": "Inicio",
+    "features": "Características",
+    "demo": "Demo en Vivo",
+    "install": "Instalar",
+    "docs": "Documentación",
+    "github": "GitHub"
+  },
+  "hero": {
+    "badge": "Código Abierto • Gratis para Siempre",
+    "title": "Haz la Web Accesible para Todos",
+    "subtitle": "Escanea cualquier sitio web en busca de problemas de accesibilidad, obtén explicaciones claras y recibe fragmentos de código listos para usar — impulsado por axe-core e IA.",
+    "ctaScan": "Probar Demo",
+    "ctaInstall": "Instalar Bookmarklet",
+    "ctaCli": "Obtener CLI",
+    "stats": {
+      "rules": "80+ Reglas",
+      "wcag": "WCAG 2.1",
+      "languages": "7 Idiomas",
+      "license": "Licencia MIT"
+    }
+  },
+  "features": {
+    "title": "Todo lo que Necesitas",
+    "subtitle": "Un kit completo para auditoría de accesibilidad web",
+    "scanner": {
+      "title": "Escáner Inteligente",
+      "desc": "Impulsado por axe-core, el motor estándar de la industria para pruebas de accesibilidad. Detecta más de 80 tipos de violaciones WCAG sin falsos positivos."
+    },
+    "explanations": {
+      "title": "Explicaciones con IA",
+      "desc": "Cada violación incluye una explicación clara y legible de qué está mal, a quién afecta y exactamente cómo corregirlo."
+    },
+    "snippets": {
+      "title": "Fragmentos de Corrección",
+      "desc": "Correcciones de código listas para copiar y pegar. Ve el antes y después lado a lado — sin conjeturas."
+    },
+    "bookmarklet": {
+      "title": "Bookmarklet",
+      "desc": "Herramienta de un clic para el navegador. Arrástralo a tu barra de marcadores y escanea cualquier página al instante."
+    },
+    "cli": {
+      "title": "Herramienta CLI",
+      "desc": "Automatiza escaneos de accesibilidad en tu pipeline CI/CD. Escanea URLs individuales o procesa sitemaps completos."
+    },
+    "reports": {
+      "title": "Reportes Profesionales",
+      "desc": "Genera reportes profesionales en HTML, JSON o Markdown con puntuación de severidad, mapeo WCAG y datos exportables."
+    }
+  },
+  "demo": {
+    "title": "Demo en Vivo",
+    "subtitle": "Ve reportes reales de accesibilidad de sitios web de ejemplo",
+    "selectSite": "Selecciona un sitio de demostración:",
+    "sites": {
+      "gov": "Portal Gubernamental",
+      "ecommerce": "Tienda E-Commerce",
+      "blog": "Blog de Noticias"
+    },
+    "score": "Puntuación",
+    "violations": "Violaciones",
+    "passes": "Aprobados",
+    "impact": {
+      "critical": "Crítico",
+      "serious": "Grave",
+      "moderate": "Moderado",
+      "minor": "Menor"
+    },
+    "before": "Código Actual",
+    "after": "Corrección Sugerida",
+    "copyFix": "Copiar",
+    "copied": "¡Copiado!",
+    "learnMore": "Más Información",
+    "elements": "elementos afectados",
+    "noViolations": "¡No se encontraron violaciones — esta página pasa todas las verificaciones!"
+  },
+  "install": {
+    "title": "Comienza en Segundos",
+    "subtitle": "Elige la herramienta que se adapte a tu flujo de trabajo",
+    "bookmarklet": {
+      "title": "Bookmarklet",
+      "desc": "Arrastra este botón a tu barra de marcadores:",
+      "dragText": "♿ A11y Ally",
+      "instructions": "Luego haz clic en él en cualquier sitio web para ejecutar un escaneo de accesibilidad.",
+      "step1": "Arrastra el botón a tu barra de marcadores",
+      "step2": "Navega a cualquier sitio web que quieras probar",
+      "step3": "Haz clic en el bookmarklet para escanear la página"
+    },
+    "cli": {
+      "title": "Herramienta CLI",
+      "desc": "Instala globalmente con npm:",
+      "usage": "Uso:"
+    }
+  },
+  "footer": {
+    "desc": "Asistente de accesibilidad web de código abierto. Haciendo la web usable para todos.",
+    "links": "Enlaces",
+    "resources": "Recursos",
+    "wcagGuide": "Guías WCAG",
+    "axeDocs": "Docs de axe-core",
+    "a11yProject": "The A11y Project",
+    "license": "Publicado bajo Licencia MIT",
+    "madeWith": "Hecho con ♥ para la accesibilidad"
+  },
+  "languages": {
+    "en": "English",
+    "es": "Español",
+    "fr": "Français",
+    "de": "Deutsch",
+    "pt": "Português",
+    "zh": "中文",
+    "ja": "日本語"
+  }
+}

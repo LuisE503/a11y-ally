@@ -1,0 +1,41 @@
+{
+  "meta": { "lang": "de", "dir": "ltr", "name": "Deutsch" },
+  "nav": { "home": "Startseite", "features": "Funktionen", "demo": "Live-Demo", "install": "Installieren", "docs": "Dokumentation", "github": "GitHub" },
+  "hero": {
+    "badge": "Open Source • Für Immer Kostenlos",
+    "title": "Machen Sie das Web Zugänglich für Alle",
+    "subtitle": "Scannen Sie jede Website auf Barrierefreiheit, erhalten Sie klare Erklärungen und fertige Code-Korrekturen — angetrieben von axe-core und KI.",
+    "ctaScan": "Demo Testen",
+    "ctaInstall": "Bookmarklet Installieren",
+    "ctaCli": "CLI Herunterladen",
+    "stats": { "rules": "80+ Regeln", "wcag": "WCAG 2.1", "languages": "7 Sprachen", "license": "MIT-Lizenz" }
+  },
+  "features": {
+    "title": "Alles was Sie Brauchen",
+    "subtitle": "Ein komplettes Toolkit für Web-Barrierefreiheit",
+    "scanner": { "title": "Intelligenter Scanner", "desc": "Angetrieben von axe-core, dem Industriestandard für Barrierefreiheitstests. Erkennt über 80 WCAG-Verstöße." },
+    "explanations": { "title": "KI-Erklärungen", "desc": "Jeder Verstoß wird mit einer klaren Erklärung versehen, was falsch ist und wie es behoben werden kann." },
+    "snippets": { "title": "Fix-Snippets", "desc": "Sofort einsetzbare Code-Korrekturen. Sehen Sie Vorher und Nachher nebeneinander." },
+    "bookmarklet": { "title": "Bookmarklet", "desc": "Ein-Klick-Browser-Tool. Ziehen Sie es in Ihre Lesezeichenleiste." },
+    "cli": { "title": "CLI-Tool", "desc": "Automatisieren Sie Barrierefreiheits-Scans in Ihrer CI/CD-Pipeline." },
+    "reports": { "title": "Professionelle Berichte", "desc": "HTML-, JSON- oder Markdown-Berichte mit Schweregrad-Bewertung und WCAG-Zuordnung." }
+  },
+  "demo": {
+    "title": "Live-Demo",
+    "subtitle": "Sehen Sie echte Barrierefreiheitsberichte",
+    "selectSite": "Demo-Website auswählen:",
+    "sites": { "gov": "Regierungsportal", "ecommerce": "E-Commerce-Shop", "blog": "Nachrichtenblog" },
+    "score": "Bewertung", "violations": "Verstöße", "passes": "Bestanden",
+    "impact": { "critical": "Kritisch", "serious": "Schwerwiegend", "moderate": "Mäßig", "minor": "Gering" },
+    "before": "Aktueller Code", "after": "Vorgeschlagene Korrektur", "copyFix": "Kopieren", "copied": "Kopiert!", "learnMore": "Mehr erfahren", "elements": "betroffene Elemente",
+    "noViolations": "Keine Verstöße gefunden — diese Seite besteht alle Prüfungen!"
+  },
+  "install": {
+    "title": "In Sekunden Starten",
+    "subtitle": "Wählen Sie das passende Tool",
+    "bookmarklet": { "title": "Bookmarklet", "desc": "Ziehen Sie diesen Button in Ihre Lesezeichenleiste:", "dragText": "♿ A11y Ally", "instructions": "Dann klicken Sie darauf auf jeder Website.", "step1": "Button in die Lesezeichenleiste ziehen", "step2": "Zur gewünschten Website navigieren", "step3": "Bookmarklet anklicken" },
+    "cli": { "title": "CLI-Tool", "desc": "Global mit npm installieren:", "usage": "Verwendung:" }
+  },
+  "footer": { "desc": "Open-Source Web-Barrierefreiheitsassistent.", "links": "Links", "resources": "Ressourcen", "wcagGuide": "WCAG-Richtlinien", "axeDocs": "axe-core Docs", "a11yProject": "The A11y Project", "license": "Veröffentlicht unter MIT-Lizenz", "madeWith": "Mit ♥ für Barrierefreiheit gemacht" },
+  "languages": { "en": "English", "es": "Español", "fr": "Français", "de": "Deutsch", "pt": "Português", "zh": "中文", "ja": "日本語" }
+}

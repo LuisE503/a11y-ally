@@ -1,0 +1,38 @@
+<!-- Test HTML file with known accessibility violations for testing -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  <!-- Missing lang on html -->
+  <!-- Empty title -->
+  
+  <!-- No main landmark -->
+  <div class="content">
+    
+    <!-- Image without alt -->
+    <img src="test.jpg">
+    
+    <!-- Button without accessible name -->
+    <button><span class="icon">X</span></button>
+    
+    <!-- Input without label -->
+    <input type="text" placeholder="Search...">
+    
+    <!-- Link without text -->
+    <a href="/page"></a>
+    
+    <!-- Low contrast text -->
+    <p style="color: #ccc; background: #fff;">Low contrast text</p>
+    
+    <!-- Skipped heading level -->
+    <h1>Title</h1>
+    <h4>Subtitle (skipped h2, h3)</h4>
+    
+    <!-- Positive tabindex -->
+    <div tabindex="5">Bad tabindex</div>
+    
+  </div>
+</body>
+</html>

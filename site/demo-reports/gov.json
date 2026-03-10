@@ -1,0 +1,139 @@
+{
+  "url": "https://gov-portal-example.org",
+  "pageTitle": "Government Services Portal",
+  "timestamp": "2026-03-10T10:00:00.000Z",
+  "score": 42,
+  "violations": [
+    {
+      "id": "image-alt",
+      "impact": "critical",
+      "severityLabel": "Critical",
+      "title": "Missing Image Alt Text",
+      "description": "Images must have alternate text to convey their purpose to screen reader users.",
+      "explanation": "All images must have an alt attribute that describes the image content. Screen readers use this text to convey the image's purpose to visually impaired users. Decorative images should use alt=\"\".",
+      "wcagLevel": "A",
+      "wcagRef": "WCAG 1.1.1 (Level A)",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.9/image-alt",
+      "nodes": [
+        { "html": "<img src=\"/img/hero-banner.jpg\" class=\"hero-img\">", "target": [".hero-img"] },
+        { "html": "<img src=\"/img/services-icon.png\">", "target": ["#services img"] }
+      ],
+      "fixSnippets": [
+        {
+          "original": "<img src=\"/img/hero-banner.jpg\" class=\"hero-img\">",
+          "fixed": "<img alt=\"Government services overview showing citizens accessing digital services\" src=\"/img/hero-banner.jpg\" class=\"hero-img\">"
+        },
+        {
+          "original": "<img src=\"/img/services-icon.png\">",
+          "fixed": "<img alt=\"Online services directory icon\" src=\"/img/services-icon.png\">"
+        }
+      ],
+      "resources": ["https://www.w3.org/WAI/tutorials/images/"]
+    },
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "severityLabel": "Serious",
+      "title": "Insufficient Color Contrast",
+      "description": "Text must have a contrast ratio of at least 4.5:1 for normal text and 3:1 for large text.",
+      "explanation": "Text must have a contrast ratio of at least 4.5:1 for normal text and 3:1 for large text (18pt or 14pt bold) against its background. This ensures readability for users with low vision or color blindness.",
+      "wcagLevel": "AA",
+      "wcagRef": "WCAG 1.4.3 (Level AA)",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.9/color-contrast",
+      "nodes": [
+        { "html": "<p class=\"subtitle\" style=\"color: #999; background: #fff;\">Welcome to services</p>", "target": [".subtitle"] }
+      ],
+      "fixSnippets": [
+        {
+          "original": ".subtitle { color: #999; background: #fff; }",
+          "fixed": ".subtitle {\n  color: #595959; /* Contrast ratio 7:1 */\n  background: #fff;\n}"
+        }
+      ],
+      "resources": ["https://webaim.org/resources/contrastchecker/"]
+    },
+    {
+      "id": "html-has-lang",
+      "impact": "serious",
+      "severityLabel": "Serious",
+      "title": "HTML Element Missing Language Attribute",
+      "description": "The <html> element must have a lang attribute specifying the page language.",
+      "explanation": "The <html> element must have a lang attribute specifying the page language. Screen readers use this to load the correct pronunciation rules.",
+      "wcagLevel": "A",
+      "wcagRef": "WCAG 3.1.1 (Level A)",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.9/html-has-lang",
+      "nodes": [
+        { "html": "<html>", "target": ["html"] }
+      ],
+      "fixSnippets": [
+        { "original": "<html>", "fixed": "<html lang=\"en\">" }
+      ],
+      "resources": ["https://www.w3.org/WAI/WCAG21/Understanding/language-of-page.html"]
+    },
+    {
+      "id": "label",
+      "impact": "critical",
+      "severityLabel": "Critical",
+      "title": "Form Input Missing Label",
+      "description": "Every form input must have a programmatically associated label.",
+      "explanation": "Every form input must have a programmatically associated label using <label for=\"\">, aria-label, or aria-labelledby. This tells screen reader users what information to enter.",
+      "wcagLevel": "A",
+      "wcagRef": "WCAG 1.3.1 (Level A)",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.9/label",
+      "nodes": [
+        { "html": "<input type=\"text\" placeholder=\"Search services...\">", "target": ["input[type=text]"] },
+        { "html": "<input type=\"email\" placeholder=\"Enter email\">", "target": ["input[type=email]"] }
+      ],
+      "fixSnippets": [
+        {
+          "original": "<input type=\"text\" placeholder=\"Search services...\">",
+          "fixed": "<label for=\"search-input\">Search services</label>\n<input type=\"text\" id=\"search-input\" placeholder=\"Search services...\">"
+        }
+      ],
+      "resources": ["https://www.w3.org/WAI/tutorials/forms/labels/"]
+    },
+    {
+      "id": "landmark-one-main",
+      "impact": "moderate",
+      "severityLabel": "Moderate",
+      "title": "Page Missing Main Landmark",
+      "description": "Each page should have exactly one main landmark to identify the primary content.",
+      "explanation": "Each page should have exactly one <main> element (or role=\"main\") to identify the primary content area. This allows screen reader users to skip directly to the main content.",
+      "wcagLevel": "A",
+      "wcagRef": "WCAG 1.3.1 (Level A)",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.9/landmark-one-main",
+      "nodes": [
+        { "html": "<body>", "target": ["body"] }
+      ],
+      "fixSnippets": [
+        {
+          "original": "<body>\n  <div class=\"content\">...</div>\n</body>",
+          "fixed": "<body>\n  <header>...</header>\n  <nav>...</nav>\n  <main><!-- Primary content --></main>\n  <footer>...</footer>\n</body>"
+        }
+      ],
+      "resources": ["https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html"]
+    },
+    {
+      "id": "heading-order",
+      "impact": "moderate",
+      "severityLabel": "Moderate",
+      "title": "Heading Levels Out of Order",
+      "description": "Headings must follow a logical, sequential order without skipping levels.",
+      "explanation": "Headings must follow a logical, sequential order (h1 → h2 → h3). Skipping heading levels (e.g., h1 → h3) creates navigation confusion for screen reader users.",
+      "wcagLevel": "A",
+      "wcagRef": "WCAG 1.3.1 (Level A)",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.9/heading-order",
+      "nodes": [
+        { "html": "<h4>Quick Links</h4>", "target": ["h4"] }
+      ],
+      "fixSnippets": [
+        {
+          "original": "<h1>Portal</h1>\n<h4>Quick Links</h4>",
+          "fixed": "<h1>Portal</h1>\n<h2>Quick Links</h2>"
+        }
+      ],
+      "resources": ["https://www.w3.org/WAI/tutorials/page-structure/headings/"]
+    }
+  ],
+  "passes": 31,
+  "engine": { "name": "axe-core", "version": "4.9.1" }
+}

@@ -1,0 +1,41 @@
+{
+  "meta": { "lang": "zh", "dir": "ltr", "name": "中文" },
+  "nav": { "home": "首页", "features": "功能", "demo": "在线演示", "install": "安装", "docs": "文档", "github": "GitHub" },
+  "hero": {
+    "badge": "开源 • 永久免费",
+    "title": "让网络对所有人无障碍",
+    "subtitle": "扫描任何网站的无障碍问题，获取清晰的解释和即用型修复代码片段 — 由 axe-core 和 AI 驱动。",
+    "ctaScan": "试用演示",
+    "ctaInstall": "安装书签工具",
+    "ctaCli": "获取 CLI 工具",
+    "stats": { "rules": "80+ 规则", "wcag": "WCAG 2.1", "languages": "7 种语言", "license": "MIT 许可证" }
+  },
+  "features": {
+    "title": "您所需的一切",
+    "subtitle": "完整的网络无障碍审计工具包",
+    "scanner": { "title": "智能扫描器", "desc": "由 axe-core 驱动，业界标准的无障碍测试引擎。检测 80 多种 WCAG 违规类型。" },
+    "explanations": { "title": "AI 解释", "desc": "每个违规都附有清晰的解释：问题所在、影响人群以及修复方法。" },
+    "snippets": { "title": "修复代码片段", "desc": "即可复制粘贴的代码修正。并排查看修改前后的对比。" },
+    "bookmarklet": { "title": "书签工具", "desc": "一键浏览器工具。拖放到书签栏，即时扫描任何页面。" },
+    "cli": { "title": "CLI 工具", "desc": "在 CI/CD 管道中自动化无障碍扫描。" },
+    "reports": { "title": "专业报告", "desc": "生成 HTML、JSON 或 Markdown 报告，包含严重性评分和 WCAG 映射。" }
+  },
+  "demo": {
+    "title": "在线演示",
+    "subtitle": "查看真实的无障碍报告",
+    "selectSite": "选择演示站点：",
+    "sites": { "gov": "政府门户", "ecommerce": "电商网站", "blog": "新闻博客" },
+    "score": "评分", "violations": "违规", "passes": "通过",
+    "impact": { "critical": "严重", "serious": "重要", "moderate": "中等", "minor": "轻微" },
+    "before": "当前代码", "after": "建议修复", "copyFix": "复制", "copied": "已复制！", "learnMore": "了解更多", "elements": "受影响的元素",
+    "noViolations": "未发现违规 — 此页面通过所有检查！"
+  },
+  "install": {
+    "title": "几秒钟即可开始",
+    "subtitle": "选择适合您工作流的工具",
+    "bookmarklet": { "title": "书签工具", "desc": "将此按钮拖到书签栏：", "dragText": "♿ A11y Ally", "instructions": "然后在任何网站上点击它进行扫描。", "step1": "将按钮拖到书签栏", "step2": "导航到要测试的网站", "step3": "点击书签工具进行扫描" },
+    "cli": { "title": "CLI 工具", "desc": "使用 npm 全局安装：", "usage": "用法：" }
+  },
+  "footer": { "desc": "开源网络无障碍助手。让网络对所有人可用。", "links": "链接", "resources": "资源", "wcagGuide": "WCAG 指南", "axeDocs": "axe-core 文档", "a11yProject": "The A11y Project", "license": "MIT 许可证发布", "madeWith": "为无障碍而生 ♥" },
+  "languages": { "en": "English", "es": "Español", "fr": "Français", "de": "Deutsch", "pt": "Português", "zh": "中文", "ja": "日本語" }
+}

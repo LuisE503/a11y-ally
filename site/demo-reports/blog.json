@@ -1,0 +1,96 @@
+{
+  "url": "https://daily-news-blog.example.com",
+  "pageTitle": "Daily News Blog",
+  "timestamp": "2026-03-10T10:00:00.000Z",
+  "score": 71,
+  "violations": [
+    {
+      "id": "heading-order",
+      "impact": "moderate",
+      "severityLabel": "Moderate",
+      "title": "Heading Levels Skip from H2 to H4",
+      "description": "Blog article headings skip levels, breaking screen reader navigation.",
+      "explanation": "Headings must follow a logical, sequential order (h1 → h2 → h3). Skipping heading levels creates navigation confusion for screen reader users who rely on heading structure to scan content.",
+      "wcagLevel": "A",
+      "wcagRef": "WCAG 1.3.1 (Level A)",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.9/heading-order",
+      "nodes": [
+        { "html": "<h4 class=\"sidebar-title\">Related Articles</h4>", "target": [".sidebar-title"] }
+      ],
+      "fixSnippets": [
+        {
+          "original": "<h1>Article Title</h1>\n...\n<h4 class=\"sidebar-title\">Related Articles</h4>",
+          "fixed": "<h1>Article Title</h1>\n...\n<h2 class=\"sidebar-title\">Related Articles</h2>"
+        }
+      ],
+      "resources": ["https://www.w3.org/WAI/tutorials/page-structure/headings/"]
+    },
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "severityLabel": "Serious",
+      "title": "Article Meta Text Low Contrast",
+      "description": "Date, author, and category text uses light gray that fails WCAG contrast.",
+      "explanation": "Text must have a contrast ratio of at least 4.5:1. Metadata text like dates and author names are often styled with very light colors that fail contrast requirements, making them unreadable for users with low vision.",
+      "wcagLevel": "AA",
+      "wcagRef": "WCAG 1.4.3 (Level AA)",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.9/color-contrast",
+      "nodes": [
+        { "html": "<span class=\"meta-date\" style=\"color:#bbb\">March 10, 2026</span>", "target": [".meta-date"] },
+        { "html": "<span class=\"meta-author\" style=\"color:#aaa\">By John Smith</span>", "target": [".meta-author"] }
+      ],
+      "fixSnippets": [
+        {
+          "original": ".meta-date, .meta-author { color: #bbb; }",
+          "fixed": ".meta-date, .meta-author {\n  color: #6b6b6b; /* Contrast ratio 5.3:1 on white */\n}"
+        }
+      ],
+      "resources": ["https://webaim.org/resources/contrastchecker/"]
+    },
+    {
+      "id": "link-name",
+      "impact": "serious",
+      "severityLabel": "Serious",
+      "title": "Read More Links Lack Context",
+      "description": "Multiple 'Read more' links without indicating which article they reference.",
+      "explanation": "Links with generic text like 'Read more' fail accessibility when there are multiple such links on a page. Each link must indicate its destination, either through visible text or aria-label.",
+      "wcagLevel": "A",
+      "wcagRef": "WCAG 2.4.4 (Level A)",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.9/link-name",
+      "nodes": [
+        { "html": "<a href=\"/article/123\" class=\"read-more\">Read more</a>", "target": [".article-card:nth-child(1) .read-more"] },
+        { "html": "<a href=\"/article/456\" class=\"read-more\">Read more</a>", "target": [".article-card:nth-child(2) .read-more"] }
+      ],
+      "fixSnippets": [
+        {
+          "original": "<a href=\"/article/123\" class=\"read-more\">Read more</a>",
+          "fixed": "<a href=\"/article/123\" class=\"read-more\" aria-label=\"Read more about: Breaking News Article Title\">\n  Read more <span class=\"sr-only\">about Breaking News Article Title</span>\n</a>"
+        }
+      ],
+      "resources": ["https://www.w3.org/WAI/WCAG21/Understanding/link-purpose-in-context.html"]
+    },
+    {
+      "id": "region",
+      "impact": "moderate",
+      "severityLabel": "Moderate",
+      "title": "Content Not in Landmark Region",
+      "description": "Some content blocks are not contained within semantic landmark regions.",
+      "explanation": "All page content should be contained within landmark regions (<header>, <nav>, <main>, <footer>, <aside>) so screen reader users can navigate by landmark.",
+      "wcagLevel": "A",
+      "wcagRef": "WCAG 1.3.1 (Level A)",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.9/region",
+      "nodes": [
+        { "html": "<div class=\"newsletter-signup\">...</div>", "target": [".newsletter-signup"] }
+      ],
+      "fixSnippets": [
+        {
+          "original": "<div class=\"newsletter-signup\">...</div>",
+          "fixed": "<aside aria-label=\"Newsletter signup\">\n  <div class=\"newsletter-signup\">...</div>\n</aside>"
+        }
+      ],
+      "resources": ["https://www.w3.org/WAI/ARIA/apg/practices/landmark-regions/"]
+    }
+  ],
+  "passes": 48,
+  "engine": { "name": "axe-core", "version": "4.9.1" }
+}
